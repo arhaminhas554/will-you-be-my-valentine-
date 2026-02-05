@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Hamna 🦋</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffc1dc, #ffe6f2);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff0f6;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 380px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      color: #ff2f78;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      position: relative;
+      z-index: 20;
+    }
+
+    #yes {
+      background: #ff2f78;
+      color: white;
+    }
+
+    #no {
+      background: #888;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Butterflies */
+    .butterfly {
+      position: absolute;
+      font-size: 26px;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-25px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Falling flowers & hearts */
+    .falling {
+      position: absolute;
+      font-size: 22px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Slider for multiple pictures */
+    .slider {
+      width: 250px;
+      height: 250px;
+      margin: 0 auto 20px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .slider img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .slider img.active {
+      opacity: 1;
+    }
+
+    /* Hide YouTube iframe */
+    #bgMusic {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Butterflies -->
+  <div class="butterfly" style="top:10%; left:15%;">🦋</div>
+  <div class="butterfly" style="top:15%; right:20%;">🦋</div>
+  <div class="butterfly" style="bottom:20%; left:25%;">🦋</div>
+  <div class="butterfly" style="bottom:25%; right:15%;">🦋</div>
+
+  <div class="container">
+    <h1>Hamna 🦋💖</h1>
+
+    <!-- Slider for multiple pictures -->
+    <div class="slider" id="slider">
+      <img src="https://i.ibb.co/23FnhQ7g/IMG-0041.jpg" class="active" alt="Hamna">
+      <img src="https://i.ibb.co/vxCLK1S1/IMG-4433.jpg" alt="Hamna">
+      <img src="https://i.ibb.co/g0g4hhW/IMG-2052.jpg" alt="Hamna">
+      <img src="https://i.ibb.co/zV4HYJ4V/IMG-2053.jpg" alt="Hamna">
+      <img src="https://i.ibb.co/RkRjGpX4/IMG-2059.jpg" alt="Hamna">
+      <img src="https://i.ibb.co/QjvksxNR/IMG-1395.png" alt="Hamna">
+      <img src="https://i.ibb.co/chddyGV5/IMG-1396.png" alt="Hamna">
+    </div>
+
+    <p>
+      Hamna, you are my little butterfly — soft, beautiful, and full of colors.
+      You make my world brighter just by being in it.
+      Will you be my Valentine and let me choose you today and always? 🌸💗
+    </p>
+
+    <h3>Will you be my Valentine? 🌷</h3>
+
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no">No 💔</button>
+  </div>
+
+  <!-- YouTube background music -->
+  <iframe id="bgMusic" src="https://www.youtube.com/embed/DZUD5dUV_Gw?autoplay=1&loop=1&playlist=DZUD5dUV_Gw" allow="autoplay"></iframe>
+
+  <script>
+    // Runaway "No" button
+    const noBtn = document.getElementById("no");
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    // YES clicked
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="text-align:center; padding:40px;">
+          <h1 style="color:#ff2f78;">Yayyy Hamna! 🦋💖</h1>
+          <p style="font-size:18px; color:#444;">
+            My butterfly said YES 🌸  
+            You just made my heart smile forever 💕
+          </p>
+          <img src="https://i.ibb.co/23FnhQ7g/IMG-0041.jpg" style="border-radius:15px; margin-top:20px; width:250px;">
+        </div>
+      `;
+    }
+
+    // Falling flowers and hearts
+    function createFalling() {
+      const falling = document.createElement("div");
+      falling.className = "falling";
+      const emojis = ["🌸", "💖", "💗", "🌷"];
+      falling.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      falling.style.left = Math.random() * window.innerWidth + "px";
+      falling.style.fontSize = (15 + Math.random() * 15) + "px";
+      falling.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(falling);
+      setTimeout(() => falling.remove(), 8000);
+    }
+    setInterval(createFalling, 400);
+
+    // Slider logic for multiple images
+    let current = 0;
+    const slides = document.querySelectorAll("#slider img");
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 3000); // change image every 3 seconds
+
+  </script>
+
+</body>
+</html>
